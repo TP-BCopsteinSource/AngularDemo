@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PessoaServiceService } from './pessoa-service.service';
+import { Pessoa } from './pessoa';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,16 @@ export class AppComponent {
   fieldNome : string;
   fieldIdade : number;
 
-  send() {
-    this.pessoaService.getPessoaByNome(this.fieldNome)
-      .subscribe((val) => { alert(val); });
+  getIdade() {
+    this.pessoaService
+      .getPessoaByNome(this.fieldNome)
+      .subscribe((val) => { this.fieldIdade = val.idade; });
+  }
+
+  postPessoa() {
+    this.pessoaService
+      .postPessoa(new Pessoa(this.fieldNome,this.fieldIdade))
+      .subscribe((val)=>alert(val.nome+":"+val.idade));
   }
 
   constructor(private pessoaService : PessoaServiceService) {}

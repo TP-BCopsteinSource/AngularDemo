@@ -8,10 +8,15 @@ import { Pessoa } from './pessoa';
 })
 export class PessoaServiceService {
 
-  url = "localhost:8080";
+  url = "http://localhost:8080";
 
   getPessoaByNome(nome : string) : Observable<Pessoa> {
     return this.http.get<Pessoa>(this.url + "/getPessoa/" + nome);
+  }
+
+  postPessoa(pessoa:Pessoa) : Observable<Pessoa> { 
+    return this.http
+      .post<Pessoa>(this.url+"/setPessoa/",pessoa);
   }
 
   constructor(private http: HttpClient) { }

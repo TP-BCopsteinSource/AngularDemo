@@ -13,10 +13,11 @@
   <br /><br />
 
   <label>Idade:</label>
-  <input type="text" name="idade" [(ngModel)]="fieldIdade" disabled />
+  <input type="text" name="idade" [(ngModel)]="fieldIdade" />
 </form>
 
 <br/>
-<button (click)="send()">SEND</button>
+<button (click)="getIdade()">GetIdade</button>
+<button (click)="postPessoa()">NewPessoa</button>
 
 <router-outlet></router-outlet>
